@@ -28,4 +28,8 @@ router.get(
 );
 router.put(`/api/ecom/v1/categories`, CategoryController.updateCategory);
 
+router.get("/health", (req, res) => {
+  res.status(200).json({ "status" : "Ok"});
+});
+
 module.exports = router;
