@@ -1,6 +1,6 @@
 const errorTypes = {
   duplicate_request_error: "Duplicate traceid received in the request",
-  alid_request_error: "The request format is not correct",
+  invalid_request_error: "The request format is not correct",
   authentication_error:
     "The authentication signature received in the request could not be matched",
   inaccessible_resource_error:

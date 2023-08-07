@@ -1,3 +1,4 @@
+const Api400Error = require("../errors/Api400Error");
 const Product = require("../models/product");
 
 const products = {
@@ -19,18 +20,35 @@ const products = {
       });
   },
 
-  //GET get product by SKU
-  getProductBySKU: function (req, res) {
-    const sku = req.params.sku;
-    console.log("product sku", sku);
-    Product.find({ sku: sku }, "-_id -_class").then((data) => {
+  //GET get product by ID
+  getProductById: function (req, res, next) {
+    const id = req.params.id;
+    console.log("product id", id);
+    if (id === undefined || id === null || isNaN(id)) {
+      const err = new Api400Error("Invalid input");
+      next(err);
+    }
+    Product.find({ productid: Number(id) }, "-_id -_class").then((data) => {
+      console.log("Data", data);
       if (!data)
         res.status(404).send({
-          message: "Product with SKU " + sku + " is not found.",
+          message: "Product with ID " + id + " is not found.",
         });
       else res.send(data);
     });
   },
+  //GET get product by SKU
+  //   getProductBySKU: function (req, res) {
+  //     const sku = req.params.sku;
+  //     console.log("product sku", sku);
+  //     Product.find({ sku: sku }, "-_id -_class").then((data) => {
+  //       if (!data)
+  //         res.status(404).send({
+  //           message: "Product with SKU " + sku + " is not found.",
+  //         });
+  //       else res.send(data);
+  //     });
+  //   },
 
   searchProductsByName: function (req, res) {
     const name = req.params.name;

@@ -1,15 +1,19 @@
 const express = require("express");
-const bodyParser = require("body-parser");
 // const config = require("app-config");
+const bodyParser = require("body-parser");
 const cors = require("cors");
 const helmet = require("helmet");
 const mongoose = require("mongoose");
-const routes = require("./src/app/routes");
-const requestValidator = require("./src/app/validators/validateBody");
-const customErrorHandler = require("./src/app/errors/customErrorHandler");
+const customErrorHandler = require("./src/errors/customErrorHandler");
+const router = require("./src/routes/router");
 
 const app = express();
 const port = 5000;
+
+// parse application/x-www-form-urlencoded
+app.use(bodyParser.urlencoded({ extended: false }))
+// parse application/json
+app.use(bodyParser.json())
 
 // Optional: Configure cors to prevent unauthorised domain to access your resources
 const allowlist = [
@@ -46,15 +50,11 @@ const corsOptionsDelegate = (req, callback) => {
 app.use(cors(corsOptionsDelegate));
 // Optional: To add additional security to protect your HTTP headers in response.
 // app.use(helmet());
-// parse requests of content-type - application/json
-app.use(bodyParser.json());
-// parse requests of content-type - application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: true }));
 
 // Custom middleware functions
 // app.use(requestValidator);
 
-app.use("/", routes);
+app.use("/", router);
 
 // DB Connection
 mongoose
