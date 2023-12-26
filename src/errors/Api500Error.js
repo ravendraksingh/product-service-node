@@ -1,4 +1,4 @@
-const BaseError = require("./baseError");
+const BaseError = require("./BaseError");
 const errorTypes = require("./errorTypes");
 
 class Api500Error extends BaseError {
