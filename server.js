@@ -11,9 +11,9 @@ const app = express();
 const port = 5000;
 
 // parse application/x-www-form-urlencoded
-app.use(bodyParser.urlencoded({ extended: false }))
+app.use(bodyParser.urlencoded({ extended: false }));
 // parse application/json
-app.use(bodyParser.json())
+app.use(bodyParser.json());
 
 // Optional: Configure cors to prevent unauthorised domain to access your resources
 const allowlist = [
@@ -59,6 +59,7 @@ app.use("/", router);
 // DB Connection
 mongoose
   .connect(
+    // "mongodb+srv://ravendraaws01:d31yWelFrnh6dUNX@cluster0.m0kbdbr.mongodb.net/product-catalog?retryWrites=true&w=majority&appName=AtlasApp",
     "mongodb://127.0.0.1:27017/test",
     { useNewUrlParser: true }
     // config.db.url, // refer to the config/dev/db.js file

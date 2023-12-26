@@ -17,7 +17,7 @@ const categories = {
     // Find if document already exists
     try {
       const catExists = await Category.exists({ name: body.name });
-      console.log(catExists);
+      //   console.log(catExists);
       if (!catExists) {
         const savedCategory = await _category.save();
         console.log("savedCategory = ", savedCategory);
@@ -31,21 +31,22 @@ const categories = {
     }
   },
 
-  getAllCategories: function (req, res) {
-    Category.find({}, "-_class -_id").then((data) => {
+  getAllCategories: function (req, res, next) {
+    Category.find({}, "-_class").then((data) => {
       console.log("data", data);
       if (data === null || data.length === 0) {
         const err = new Api404Error("Category not found");
         next(err);
       } else {
-        var jsonData = data.map((d) => {
-          return {
-            id: d.catid,
-            name: d.name,
-            description: d.description,
-          };
-        });
-        res.status(200).send(jsonData);
+        // var jsonData = data.map((d) => {
+        //   return {
+        //     id: d.id,
+        //     name: d.name,
+        //     description: d.description,
+        //   };
+        // });
+        // res.status(200).send(jsonData);
+        res.status(200).send(data);
       }
     });
   },
@@ -62,7 +63,7 @@ const categories = {
           waitFor = 3500;
         }
 
-        console.log("id=", id, "WaitFor=", waitFor);
+        // console.log("id=", id, "WaitFor=", waitFor);
         setTimeout(() => {
           //   console.log("set timeout", Date.now());
           res.status(200).json({
@@ -112,7 +113,7 @@ const categories = {
 
   updateCategory: function (req, res) {
     const reqbody = req.body;
-    console.log("======= request body =======", reqbody);
+    // console.log("======= request body =======", reqbody);
     Category.findByIdAndUpdate({ _id: reqbody._id }, reqbody, {
       new: true,
       upsert: true,
@@ -129,7 +130,7 @@ const categories = {
 
   deleteCategoryById: function (req, res, next) {
     var id = req.params.id;
-    console.log("id", id);
+    // console.log("id", id);
     if (id === undefined || id === null || isNaN(id)) {
       res.status(400).json({
         message: "Invalid category id",

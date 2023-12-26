@@ -1,0 +1,87 @@
+[
+  {
+    "id": 1,
+    "name": "Electronics",
+    "description": "Electronics"
+  },
+  {
+    "id": 2,
+    "name": "Books",
+    "description": "Books and Stationary"
+  },
+  {
+    "id": 3,
+    "name": "Home & Kitchen",
+    "description": "Home & Kitchen"
+  },
+  {
+    "id": 4,
+    "name": "Furniture",
+    "description": "Furniture"
+  },
+  {
+    "id": 5,
+    "name": "Jewellery",
+    "description": "Jewellery & Accessories"
+  },
+  {
+    "id": 7,
+    "name": "Beauty",
+    "description": "Beauty & Cosmetics"
+  },
+  {
+    "id": 6,
+    "name": "Baby",
+    "description": "Baby Products"
+  },
+  {
+    "id": 8,
+    "name": "Car & Bikes",
+    "description": "Car & Motorbikes"
+  },
+  {
+    "id": 9,
+    "name": "Collectibles",
+    "description": "Collectibles"
+  },
+  {
+    "id": 10,
+    "name": "Garden & Outdoors",
+    "description": "Garden & Outdoors"
+  },
+  {
+    "id": 11,
+    "name": "Music",
+    "description": "Music"
+  },
+  {
+    "id": 12,
+    "name": "Music Instruments",
+    "description": "Music Instruments"
+  },
+  {
+    "id": 17,
+    "name": "Health & Personal Care",
+    "description": "Health & Personal Care"
+  },
+  {
+    "id": 13,
+    "name": "Watches",
+    "description": "Watches"
+  },
+  {
+    "id": 16,
+    "name": "Luggage & Bags",
+    "description": "Luggage & Bags"
+  },
+  {
+    "id": 14,
+    "name": "Office",
+    "description": "Office"
+  },
+  {
+    "id": 15,
+    "name": "Mobile",
+    "description": "Mobile"
+  }
+]
